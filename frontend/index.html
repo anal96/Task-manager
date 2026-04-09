@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskly | Premium Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Taskly</h1>
+            <p class="subtitle">Stay organized and productive.</p>
+        </header>
+
+        <main>
+            <section class="add-task-section">
+                <form id="task-form">
+                    <input type="text" id="task-input" placeholder="What needs to be done?" required>
+                    <button type="submit" id="add-btn">
+                        <span class="icon">+</span> Add Task
+                    </button>
+                </form>
+            </section>
+
+            <section class="task-list-section">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+
+                <div id="loading" class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <p>Loading your tasks...</p>
+                </div>
+
+                <div id="error-message" class="error-msg hidden"></div>
+
+                <ul id="task-list" class="task-list">
+                    <!-- Tasks will be injected here -->
+                </ul>
+
+                <div id="empty-state" class="empty-state hidden">
+                    <p>No tasks found. Start by adding one above!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Taskly. Built with Django & Vanilla JS.</p>
+        </footer>
+    </div>
+    <script src="{% static 'app.js' %}"></script>
+</body>
+</html>
